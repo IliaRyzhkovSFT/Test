@@ -1,0 +1,23 @@
+name: Lint README
+
+on:
+  push:
+    paths:
+      - 'README.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Lint README
+      uses: avto-dev/markdown-lint@v1
+      with:
+        config: |
+          {
+            "default": true,
+            "MD013": false
+          }
